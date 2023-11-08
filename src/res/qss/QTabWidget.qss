@@ -1,0 +1,52 @@
+#ribbonTabScrollAreaContent{
+    background:3px solid #d7eeff;
+}
+
+#btnClose,#btnMinSize,#btnMaxSize,#btnStyle{
+    background-color:#d7eeff;
+    border-style:inset
+}
+
+#line1{
+   border:1px solid #d7eeff;
+   background-color: #d7eeff;
+}
+
+#line_2{
+    border:1px solid #b5c8d6;
+}
+
+
+QPushButton::menu-indicator{
+    image:None
+}
+QTabBar::tab{
+    background-color: #d7eeff;
+    border-left:1px solid "gray";
+    border-right:1px solid "gray";
+    border-top:1px solid "gray";
+    border-bottom:1px solid "gray";
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    min-width: 5em;
+    min-height: 3em;
+    padding: 1px;
+    padding-top:2px;
+    padding-left:4px;
+    padding-right:4px;
+    margin-right:10px;
+    margin-top:10px;
+}
+
+QTabBar::tab:selected{
+        background-color: #d7eeff;
+        border-bottom:1px solid #abd4ff;
+}
+
+#title{
+    font-size:30px;
+    font-family:"Times New Roman";
+    color:#3a516e;
+
+}
+
