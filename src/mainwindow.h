@@ -13,6 +13,9 @@
 
 #include <QMainWindow>
 #include"ribbonmenubar.h"
+#include <kddockwidgets/MainWindow.h>
+#include <kddockwidgets/DockWidget.h>
+#include <QLabel>
 
 
 namespace Ui {
@@ -30,6 +33,7 @@ public:
 
 private:
     void creatRibbon();
+    void createDockingWidget();
 
 private:
   void paintEvent(QPaintEvent *) override;
@@ -38,6 +42,20 @@ protected:
     void changeEvent(QEvent *event);
 
 private:
+
+    // 主Dock 窗口
+    KDDockWidgets::MainWindow *m_pDockMainWindow;
+
+    //Dock 窗口
+    KDDockWidgets::DockWidget *m_pWorkDock;
+    KDDockWidgets::DockWidget *m_pQuestionDock;
+    KDDockWidgets::DockWidget *m_pSearchDock;
+    KDDockWidgets::DockWidget *m_pEditorDock;
+
+    QLabel* m_pWorkLabel;
+    QLabel* m_pQuestionLabel;
+    QLabel* m_pSearchLabel;
+    QLabel* m_pEditorLabel;
 
     RibbonMenuBar* m_pRibbonMenuBar;
     Ui::MainWindow *ui;

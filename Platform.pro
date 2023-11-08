@@ -12,6 +12,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 #增加include路径，否则找不到#incude的头文件
 INCLUDEPATH += ./src
+INCLUDEPATH += $$PWD/include
+DEPENDPATH += $$PWD/include
+
+#链接动态库
+win32: LIBS += -L$$PWD/lib/ -llibkddockwidgets1d.dll
 
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.

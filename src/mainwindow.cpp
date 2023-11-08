@@ -25,15 +25,55 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    resize(800,600);
+    resize(1200,1200);
+    //创建自定义菜单栏、标题栏
     creatRibbon();
-    showMaximized();
+    //创建主窗口DockWidget
+    createDockingWidget();
 
+    //界面最大化显示
+    showMaximized();
 }
 
 MainWindow::~MainWindow()
 {
   delete ui;
+}
+
+void MainWindow::createDockingWidget()
+{
+    m_pDockMainWindow = new KDDockWidgets::MainWindow("DOCKMAINWINDOW");
+    m_pWorkDock = new KDDockWidgets::DockWidget("WORKDOCK");
+    m_pWorkDock->setMaximumWidth(300);
+    m_pWorkDock->setMinimumWidth(120);
+    m_pWorkDock->setTitle(tr("项目"));
+
+    m_pQuestionDock = new KDDockWidgets::DockWidget("QUESTIONDOCK");
+    m_pQuestionDock->setTitle(tr("问题"));
+    m_pQuestionDock->setMaximumWidth(600);
+
+    m_pSearchDock = new KDDockWidgets::DockWidget("SEARCHDOCK");
+    m_pSearchDock->setTitle(tr("搜索"));
+
+    m_pEditorDock = new KDDockWidgets::DockWidget("EDITORDOCK");
+    m_pEditorDock->setTitle(tr("编辑器"));
+
+    m_pWorkLabel = new QLabel;
+    m_pSearchLabel = new QLabel;
+    m_pQuestionLabel=  new QLabel;
+    m_pEditorLabel = new QLabel;
+
+    m_pWorkDock->setWidget(m_pWorkLabel);
+    m_pSearchDock->setWidget(m_pSearchLabel);
+    m_pQuestionDock->setWidget(m_pQuestionLabel);
+    m_pEditorDock->setWidget(m_pEditorLabel);
+
+    this->setCentralWidget(m_pDockMainWindow);
+    m_pDockMainWindow->addDockWidget(m_pEditorDock, KDDockWidgets::Location_OnRight);
+    m_pDockMainWindow->addDockWidget(m_pSearchDock, KDDockWidgets::Location_OnBottom);
+    m_pDockMainWindow->addDockWidget(m_pWorkDock, KDDockWidgets::Location_OnLeft);
+
+    m_pSearchDock->addDockWidgetAsTab(m_pQuestionDock);
 }
 
 void MainWindow::creatRibbon()
